@@ -81,6 +81,8 @@ android {
 
     compileSdkVersion rootProject.ext.compileSdkVersion
 
+    compileSdkVersion 26
+
     namespace "com.onebitlife"
     defaultConfig {
         applicationId "com.onebitlife"
