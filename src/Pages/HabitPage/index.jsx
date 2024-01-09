@@ -3,8 +3,9 @@ import { View, Text, StyleSheet, Image, TouchableOpacity, ScrollView, Alert } fr
 import { useNavigation } from "@react-navigation/native";
 
 
-export default function HabitPage() {
+export default function HabitPage({ route }) {
     const navigation = useNavigation()
+    const { create, habit } = route.params;
 
     return (
         <View style={styles.container}>
@@ -20,7 +21,11 @@ export default function HabitPage() {
                         />
                     </TouchableOpacity>
                     <View style={styles.mainContent}>
-
+                        <Text style={styles.title}>Configurações {"\n"} de hábito</Text>
+                        <Text style={styles.inputText}>Área</Text>
+                        <View style={styles.inputContainer}>
+                            <Text style={styles.area}>{habit?.habitArea}</Text>
+                        </View>
                     </View>
                 </View>
             </ScrollView>
@@ -45,5 +50,29 @@ const styles = StyleSheet.create({
     mainContent: {
         width: 250,
         alignSelf: "center",
+    },
+    title: {
+        fontWeight: "bold",
+        textAlign: "center",
+        color: "white",
+        fontSize: 30,
+    },
+    inputText: {
+        color: "white",
+        fontSize: 16,
+        marginTop: 35,
+        marginBottom: 10,
+        marginLeft: 5,
+    },
+    inputContainer: {
+        borderWidth: 1,
+        borderColor: "#FFFFFF",
+        borderRadius: 10,
+        paddingHorizontal: 20,
+        paddingVertical:15,
+    },
+    area: {
+        color: "#BBBBBB",
+        fontSize: 15,
     },
 });
