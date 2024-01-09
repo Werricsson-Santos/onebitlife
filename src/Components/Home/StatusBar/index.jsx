@@ -7,7 +7,7 @@ export default function StatusBar(props) {
 
     return (
         <View style={styles.container}>
-            <View style={styles.StatusBarContainer}>
+            <View style={styles.statusBarContainer}>
                 <Image
                     source={require("../../../assets/icons/educationIcon.png")}
                     style={styles.icon}
@@ -15,7 +15,7 @@ export default function StatusBar(props) {
                 <ProgressBar progress={1} color={"#90B7F3"} style={styles.progress} />
             </View>
 
-            <View style={styles.StatusBarContainer}>
+            <View style={styles.statusBarContainer}>
                 <Image
                     source={require("../../../assets/icons/moneyIcon.png")}
                     style={styles.icon}
@@ -23,7 +23,7 @@ export default function StatusBar(props) {
                 <ProgressBar progress={0} color={"#85BB65"} style={styles.progress} />
             </View>
 
-            <View style={styles.StatusBarContainer}>
+            <View style={styles.statusBarContainer}>
                 <Image
                     source={require("../../../assets/icons/bodyIcon.png")}
                     style={styles.icon}
@@ -31,7 +31,7 @@ export default function StatusBar(props) {
                 <ProgressBar progress={0} color={"#FF0043"} style={styles.progress} />
             </View>
 
-            <View style={styles.StatusBarContainer}>
+            <View style={styles.statusBarContainer}>
                 <Image
                     source={require("../../../assets/icons/funIcon.png")}
                     style={styles.icon}
