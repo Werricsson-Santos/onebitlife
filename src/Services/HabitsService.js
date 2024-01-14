@@ -36,4 +36,4 @@ const createHabit = (obj) => {
     }); 
 };
 
-export default createHabit;
+export default { createHabit };

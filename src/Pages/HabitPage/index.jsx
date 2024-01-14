@@ -7,7 +7,8 @@ import SelectFrequency from "../../Components/Habit/SelectFrequency";
 import Notification from "../../Components/Habit/Notification";
 import TimeDatePicker from "../../Components/Habit/TimeDatePicker";
 import UpdateExcludeButtons from "../../Components/Habit/UpdateExcludeButtons";
-import DefaultButton from "../../Components/Common/DefaultButton"
+import DefaultButton from "../../Components/Common/DefaultButton";
+import HabitsService from "../../Services/HabitsService";
 
 
 export default function HabitPage({ route }) {
@@ -20,6 +21,9 @@ export default function HabitPage({ route }) {
 
     const { create, habit } = route.params;
 
+    const habitCreated = new Date();
+    const formatDate = `${habitCreated.getFullYear()}-${habitCreated.getMonth() + 1}-${habitCreated.getDate()}`
+
     function handleCreateHabit() {
         if ( habitInput === undefined || frequencyInput === undefined ) {
             Alert.alert("Você precisa selecionar um hábito e frequência para continuar!");
@@ -28,9 +32,24 @@ export default function HabitPage({ route }) {
         } else if ( notificationToggle === true && frequencyInput === "Diário" && dayNotification === undefined && timeNotification === undefined ) {
             Alert.alert("Você precisa dizer a frequência e horário da notificação!");
         } else {
-            navigation.navigate("Home", {
-                createdHabit: `Created in ${habit?.habitArea}`
-            })
+            HabitsService.createHabit({
+                habitArea: habit?.habitArea,
+                habitName: habitInput,
+                habitFrequency: frequencyInput,
+                habitHasNotification: notificationToggle,
+                habitNotificationFrequency: dayNotification,
+                habitNotificationTime: timeNotification,
+                lastCheck: formatDate,
+                daysWithoutChecks: 0,
+                habitIsChecked: 0,
+                prograssBar: 1,
+            }).then(() => {
+                Alert.alert("Sucesso na criação do hábito!");
+
+                navigation.navigate("Home", {
+                    createdHabit: `Created in ${habit?.habitArea}`,
+                });
+            });
         }
     };
 
