@@ -81,7 +81,7 @@ const updateHabit = (obj) => {
 };
 
 const deleteByName = (habitArea) => {
-    return new Promisse((resolve, reject) => {
+    return new Promise((resolve, reject) => {
         db.transaction((tx) => {
             tx.executeSql(
                 "DELETE FROM habits WHERE habitArea=?;",
