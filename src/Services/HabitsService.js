@@ -80,4 +80,17 @@ const updateHabit = (obj) => {
     });
 };
 
-export default { createHabit, findByArea, updateHabit };
+const deleteByName = (habitArea) => {
+    return new Promisse((resolve, reject) => {
+        db.transaction((tx) => {
+            tx.executeSql(
+                "DELETE FROM habits WHERE habitArea=?;",
+                [habitArea],
+                (_, { rowsAffected }) => resolve(rowsAffected),
+                (_, error) => reject(error)
+            );
+        });
+    });
+};
+
+export default { createHabit, findByArea, updateHabit, deleteByName };
