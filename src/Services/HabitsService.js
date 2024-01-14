@@ -60,7 +60,7 @@ const updateHabit = (obj) => {
     return new Promise((resolve, reject) => {
         db.transaction((tx) => {
             tx.executeSql(
-                `UPDATE habits SET habitName=?, habitFrequency=?, habitNotification=?, habitNotificationFrequency=?, habitNotificationTime=? WHERE
+                `UPDATE habits SET habitName=?, habitFrequency=?, habitHasNotification=?, habitNotificationFrequency=?, habitNotificationTime=? WHERE
                 habitArea=?;`,
                 [
                     obj.habitName,
