@@ -42,7 +42,7 @@ export default function HabitPage({ route }) {
                 lastCheck: formatDate,
                 daysWithoutChecks: 0,
                 habitIsChecked: 0,
-                prograssBar: 1,
+                progressBar: 1,
             }).then(() => {
                 Alert.alert("Sucesso na criação do hábito!");
 
@@ -51,7 +51,7 @@ export default function HabitPage({ route }) {
                 });
             });
         }
-    };
+    }
 
     function handleUpdateHabit() {
         if ( notificationToggle === true && !dayNotification && !timeNotification ) {
@@ -61,7 +61,7 @@ export default function HabitPage({ route }) {
                 updatedHabit: `Updated in ${habit?.habitArea}`
             });
         }
-    };
+    }
 
     return (
         <View style={styles.container}>
@@ -117,7 +117,7 @@ export default function HabitPage({ route }) {
                         {create === false ? (
                             <UpdateExcludeButtons 
                                 handleUpdate={handleUpdateHabit}
-                                habitArea={habitArea}
+                                habitArea={habitArea?.habitArea}
                                 habitInput={habitInput}
                             />
                         ) : (
