@@ -12,7 +12,7 @@ db.transaction((tx) => {
 });
 
 const createHabit = (obj) => {
-    return new Promisse((tx) => {
+    return new Promise((tx) => {
         `INSERT INTO habits (habitArea, habitName, habitFrequency, habitHasNotification, habitNotificationFrequency, habitNotificationTime,
         lastCheck, daysWithoutChecks, progressBar, habitIsChecked, habitChecks) VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)`,
         [

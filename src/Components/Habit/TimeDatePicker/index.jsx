@@ -53,20 +53,20 @@ export default function TimeDatePicker({
     };
 
     const data = [
-        { key: "Domingo", value: "Dom"},
-        { key: "Segunda", value: "Seg"},
-        { key: "Terça", value: "Ter"},
-        { key: "Quarta", value: "Qua"},
-        { key: "Quinta", value: "Qui"},
-        { key: "Sexta", value: "Sex"},
-        { key: "Sábado", value: "Sab"},
+        { key: "Domingo", value: "Domingo"},
+        { key: "Segunda", value: "Segunda"},
+        { key: "Terça", value: "Terça"},
+        { key: "Quarta", value: "Quarta"},
+        { key: "Quinta", value: "Quinta"},
+        { key: "Sexta", value: "Sexta"},
+        { key: "Sábado", value: "Sábado"},
     ];
 
     return (
         <View>
             {frequency === "Semanal" ? (
                 <SelectList 
-                    data={date}
+                    data={data}
                     search={false}
                     setSelected={setSelected}
                     onSelect={() => {
