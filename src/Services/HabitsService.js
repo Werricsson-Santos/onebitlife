@@ -36,4 +36,19 @@ const createHabit = (obj) => {
     }); 
 };
 
-export default { createHabit };
+const findByArea = (obj) => {
+    return new Promise((resolve, reject) => {
+        db.transaction((tx) => {
+            tx.executeSql(
+                "SELECT * FROM habits WHERE habitArea LIKE ?;",
+                [habitArea],
+                (_, {rows}) => {
+                    if (rows.length > 0) resolve(rows._array);
+                },
+                (_, error) => reject(error)
+            );
+        });
+    });
+};
+
+export default { createHabit, findByArea };
