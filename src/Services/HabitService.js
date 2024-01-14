@@ -10,3 +10,30 @@ db.transaction((tx) => {
         console.log(error);
     };
 });
+
+const createHabit = (obj) => {
+    return new Promisse((tx) => {
+        `INSERT INTO habits (habitArea, habitName, habitFrequency, habitHasNotification, habitNotificationFrequency, habitNotificationTime,
+        lastCheck, daysWithoutChecks, progressBar, habitIsChecked, habitChecks) VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)`,
+        [
+            obj.habitArea,
+            obj.habitName,
+            obj.habitFrequency,
+            obj.habitHasNotification,
+            obj.habitNotificationFrequency,
+            obj.habitNotificationTime,
+            obj.lastCheck,
+            obj.daysWithoutChecks,
+            obj.progressBar,
+            obj.habitIsChecked,
+            obj.habitChecks
+        ],
+        (_, {rowsAffected, insertID}) => {
+            if (rowsAffected > 0) resolve(insertID)
+            else reject("Error inserting obj: " + JSON.stringify(obj));
+        },
+        (_, error) => reject(error);    
+    }); 
+};
+
+export default createHabit;
