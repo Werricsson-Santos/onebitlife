@@ -56,4 +56,28 @@ const findByArea = (habitArea) => {
     });
 };
 
-export default { createHabit, findByArea };
+const updateHabit = (obj) => {
+    return new Promise((resolve, reject) => {
+        db.transaction((tx) => {
+            tx.executeSql(
+                `UPDATE habits SET habitName=?, habitFrequency=?, habitNotification=?, habitNotificationFrequency=?, habitNotificationTime=? WHERE
+                habitArea=?;`,
+                [
+                    obj.habitName,
+                    obj.habitFrequency,
+                    obj.habitHasNotification,
+                    obj.habitNotificationFrequency,
+                    obj.habitNotificationTime,
+                    obj.habitArea,
+                ],
+                (_, { rowsAffected }) => {
+                    if (rowsAffected > 0) resolve(rowsAffected);
+                    else reject(`Error updating obj: ${obj.habitName}`);
+                },
+                (_, error) => reject(error)
+            );
+        });
+    });
+};
+
+export default { createHabit, findByArea, updateHabit };
