@@ -89,11 +89,15 @@ export default function HabitPage({ route }) {
             }).then(() => {
                 Alert.alert("Sucesso na atualização do hábito");
                 if (!notificationToggle) {
+                    NotificationService.deleteNotification(habit?.habitName);
                 } else {
+                    NotificationService.deleteNotification(habit?.habitName);
+                    NotificationService.createNotification( habitInput, frequencyInput, dayNotification, timeNotification );
                 }
-            });
-            navigation.navigate("Home", {
-                updatedHabit: `Updated in ${habit?.habitArea}`
+
+                navigation.navigate("Home", {
+                    updatedHabit: `Updated in ${habit?.habitArea}`
+                })
             });
         }
     }
@@ -107,17 +111,17 @@ export default function HabitPage({ route }) {
     }, []);
 
     useEffect(() => {
-        if (habit?.habitHasNotification === false) {
+        if (notificationToggle === false) {
             setDayNotification(null);
-            setTimeNotification(null)
+            setTimeNotification(null);
         }
-    }, [setNotificationToggle]);
+    }, [notificationToggle]);
 
     useEffect(() => {
         notificationListener.current = Notifications.addNotificationReceivedListener((notification) => {
             setNotification(notification);
         });
-        responseListener.current = Notifications.addNotificationReceivedListener((response) => {
+        responseListener.current = Notifications.addNotificationResponseReceivedListener((response) => {
             console.log(response);
         });
         return () => {

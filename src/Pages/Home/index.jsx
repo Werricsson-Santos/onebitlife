@@ -60,7 +60,7 @@ export default function Home({ route }) {
         ChangeNavigationService.checkShowHome(1)
             .then((showHome) => {
                 const formDate = `${today.getFullYear()}-${today.getMonth() + 1}-${today.getDate()}`;
-                const checkDays = new Date(formDate) - new Date(showHome.appStartDate) + 1;
+                const checkDays = new Date(formDate).getDate() - new Date(showHome.appStartDate).getDate();
                 setRobotDaysLife(checkDays.toString().padStart(2, "0"));
             })
             .catch((err) => console.log(err));
