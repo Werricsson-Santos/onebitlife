@@ -3,7 +3,12 @@ import { View, StyleSheet, Image } from "react-native";
 
 import { ProgressBar } from "react-native-paper";
 
-export default function StatusBar(props) {
+export default function StatusBar({
+    mindHabit,
+    moneyHabit,
+    bodyHabit,
+    funHabit,
+}) {
 
     return (
         <View style={styles.container}>
@@ -12,7 +17,7 @@ export default function StatusBar(props) {
                     source={require("../../../assets/icons/educationIcon.png")}
                     style={styles.icon}
                 />
-                <ProgressBar progress={1} color={"#90B7F3"} style={styles.progress} />
+                <ProgressBar progress={mindHabit} color={"#90B7F3"} style={styles.progress} />
             </View>
 
             <View style={styles.statusBarContainer}>
@@ -20,7 +25,7 @@ export default function StatusBar(props) {
                     source={require("../../../assets/icons/moneyIcon.png")}
                     style={styles.icon}
                 />
-                <ProgressBar progress={0} color={"#85BB65"} style={styles.progress} />
+                <ProgressBar progress={moneyHabit} color={"#85BB65"} style={styles.progress} />
             </View>
 
             <View style={styles.statusBarContainer}>
@@ -28,7 +33,7 @@ export default function StatusBar(props) {
                     source={require("../../../assets/icons/bodyIcon.png")}
                     style={styles.icon}
                 />
-                <ProgressBar progress={0} color={"#FF0043"} style={styles.progress} />
+                <ProgressBar progress={bodyHabit} color={"#FF0043"} style={styles.progress} />
             </View>
 
             <View style={styles.statusBarContainer}>
@@ -36,7 +41,7 @@ export default function StatusBar(props) {
                     source={require("../../../assets/icons/funIcon.png")}
                     style={styles.icon}
                 />
-                <ProgressBar progress={0} color={"#FE7F23"} style={styles.progress} />
+                <ProgressBar progress={funHabit} color={"#FE7F23"} style={styles.progress} />
             </View>
         </View>
     );
