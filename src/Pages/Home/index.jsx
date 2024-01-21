@@ -26,7 +26,6 @@ export default function Home({ route }) {
 
     const excludeArea = route.params?.excludeArea;
 
-    console.log({mindHabit})
 
     useEffect(() => {
         HabitsService.findByArea("Mente").then((mind) => {
@@ -71,7 +70,7 @@ export default function Home({ route }) {
 
     useEffect(() => {
         CheckService.removeCheck(mindHabit, moneyHabit, bodyHabit, funHabit);
-    }, [mindHabit, moneyHabit, bodyHabit, funHabit]);   
+    }, [setMindHabit, setMoneyHabit, setBodyHabit, setFunHabit]);   
 
     return (
         <View style={styles.container}>
@@ -79,7 +78,12 @@ export default function Home({ route }) {
                 <View style={{alignItems: "center"}}>
                     <Text style={styles.dailyChecks}> ❤️ {robotDaysLife} {robotDaysLife === "01" ? "dia" : "dias"}  -  ✔️ 80 checks </Text>
 
-                    <LifeStatus />
+                    <LifeStatus 
+                        mindHabit={mindHabit}
+                        moneyHabit={moneyHabit}
+                        bodyHabit={bodyHabit}
+                        funHabit={funHabit}
+                    />
                     <StatusBar 
                         mindHabit={mindHabit?.progressBar}
                         moneyHabit={moneyHabit?.progressBar}

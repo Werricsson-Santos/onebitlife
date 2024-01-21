@@ -34,7 +34,6 @@ const removeCheckHabit = (obj) => {
 
 const removeCheck = (mindHabit, moneyHabit, bodyHabit, funHabit) => {
     const date = new Date();
-
     const mindLastCheck = date.getDate() - (new Date(mindHabit?.lastCheck).getDate() + 1);
     const moneyLastCheck = date.getDate() - (new Date(moneyHabit?.lastCheck).getDate() + 1);
     const bodyLastCheck = date.getDate() - (new Date(bodyHabit?.lastCheck).getDate() + 1);
