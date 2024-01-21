@@ -93,4 +93,20 @@ const deleteByName = (habitArea) => {
     });
 };
 
-export default { createHabit, findByArea, updateHabit, deleteByName };
+const changeProgress = (obj) => {
+    return new Promise((resolve, reject) => {
+        db.transaction((tx) => {
+            tx.executeSql(
+                    "UPDATE habits SET progressBar=? WHERE habitArea=?;",
+                [obj.progressBar, obj.habitArea],
+                (_, { rowsAffected }) => {
+                    if (rowsAffected > 0) resolve(rowsAffected);
+                    else reject("Error updating obj");
+                },
+                (_, error) => reject(error)
+            );
+        });
+    });
+};
+
+export default { createHabit, findByArea, updateHabit, deleteByName, changeProgress };

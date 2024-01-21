@@ -63,14 +63,22 @@ export default function Home({ route }) {
             .then((showHome) => {
                 const formDate = `${today.getFullYear()}-${today.getMonth() + 1}-${today.getDate()}`;
                 const checkDays = new Date(formDate).getDate() - new Date(showHome.appStartDate).getDate();
-                setRobotDaysLife(checkDays.toString().padStart(2, "0"));
+
+                if (checkDays === 0) {
+                    setRobotDaysLife(checkDays.toString().padStart(2, "0"));
+                } else {
+                    setRobotDaysLife(parseInt(checkDays / (1000 * 3600 * 24)));
+                }
             })
             .catch((err) => console.log(err));
     }, [route.params]);
 
     useEffect(() => {
         CheckService.removeCheck(mindHabit, moneyHabit, bodyHabit, funHabit);
-    }, [setMindHabit, setMoneyHabit, setBodyHabit, setFunHabit]);   
+        CheckService.checkStatus(mindHabit, moneyHabit, bodyHabit, funHabit);
+    }, [mindHabit, moneyHabit, bodyHabit, funHabit, setMindHabit, setMoneyHabit, setBodyHabit, setFunHabit]);  
+    
+    console.log(funHabit)
 
     return (
         <View style={styles.container}>
