@@ -1,4 +1,4 @@
-import db from "../Database"
+import db from "../Database";
 
 function animationStatus(
     mindHabit,
@@ -10,13 +10,13 @@ function animationStatus(
     setRobot,
 ) {
     if (
-        mindHabit === 0 &&
-        moneyHabit === 0 &&
-        bodyHabit === 0 &&
+        mindHabit === 0 ||
+        moneyHabit === 0 ||
+        bodyHabit === 0 ||
         funHabit === 0
     ) {
-        setMind("");
-        setMoney("");
+        setMind();
+        setMoney();
         setRobot(require("../assets/robot/robot-00-00.json"));
     } else {
         if (mindHabit === 0.25) {
@@ -24,14 +24,14 @@ function animationStatus(
         } else if (mindHabit === 0.5) {
             setMind(require("../assets/education/education-50.json"));
         } else {
-        setMind(require("../assets/education/education-100.json"));
+            setMind(require("../assets/education/education-100.json"));
         }
 
         if (moneyHabit === 0.25) {
             setMoney(require("../assets/money/money-25.json"));
         } else if (moneyHabit === 0.5) {
             setMoney(require("../assets/money/money-50.json"));
-        } else{
+        } else {
             setMoney(require("../assets/money/money-100.json"));
         }
 
@@ -66,8 +66,8 @@ function animationStatus(
         } else {
             setRobot(require("../assets/robot/robot-100-100.json"));
         }
-    }
-}
+    };
+};
 
 
 export default { animationStatus }
