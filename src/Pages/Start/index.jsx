@@ -1,6 +1,7 @@
 import React from "react";
 import { ScrollView, View, Image, Text, StyleSheet } from "react-native";
 import { useNavigation } from "@react-navigation/native";
+import db from "../../Database"
 
 import LifeStatus from "../../Components/Common/LifeStatus";
 import DefaultButton from "../../Components/Common/DefaultButton";
@@ -10,6 +11,18 @@ export default function Start() {
     const navigation = useNavigation();
 
     const handleNavAppExplanation = () => {
+        db.transaction((tx) => {
+            tx.executeSql(
+                `CREATE TABLE IF NOT EXISTS habits (id INTEGER PRIMARY KEY AUTOINCREMENT, habitArea TEXT, habitName TEXT, habitFrequency TEXT, habitHasNotification BOOLEAN,
+                    habitNotificationFrequency TEXT, habitNotificationTime TEXT, lastCheck TEXT, daysWithoutChecks INTEGER, progressBar INTEGER,
+                    habitIsChecked BOOLEAN, habitChecks INTEGER);`
+            ,
+            [],
+            (_, error) => {
+                console.log(error);
+            }
+            );
+        });
         navigation.navigate("AppExplanation");
     };
 

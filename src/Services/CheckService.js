@@ -124,7 +124,7 @@ const checkStatus = (mindHabit, moneyHabit, bodyHabit, funHabit) => {
     const formatDate = `${date.getFullYear()}-${date.getMonth() + 1}-${date.getDate()}`
     
     // Verificação da mente
-    const mindLastCheck = new Date(formatDate).getDate() - (new Date(mindHabit?.lastCheck).getDate());
+    const mindLastCheck = new Date(formatDate) - (new Date(mindHabit?.lastCheck));
     const mindDiff = parseInt(mindLastCheck / (1000 * 3600 * 24));
     console.log(mindDiff)
 
@@ -184,7 +184,7 @@ const checkStatus = (mindHabit, moneyHabit, bodyHabit, funHabit) => {
     }
 
     // Verificação do dinheiro
-    const moneyLastCheck = date - (new Date(moneyHabit?.lastCheck));
+    const moneyLastCheck = new Date(formatDate) - (new Date(moneyHabit?.lastCheck));
     const moneyDiff = parseInt(moneyLastCheck / (1000 * 3600 * 24));
 
     if (moneyHabit?.habitFrequency === "Diário") {
@@ -243,7 +243,7 @@ const checkStatus = (mindHabit, moneyHabit, bodyHabit, funHabit) => {
     }
 
     // Verificação do corpo
-    const bodyLastCheck = date - (new Date(bodyHabit?.lastCheck));
+    const bodyLastCheck = new Date(formatDate) - (new Date(bodyHabit?.lastCheck));
     const bodyDiff = parseInt(bodyLastCheck / (1000 * 3600 * 24));
 
     if (bodyHabit?.habitFrequency === "Diário") {
@@ -302,7 +302,7 @@ const checkStatus = (mindHabit, moneyHabit, bodyHabit, funHabit) => {
     }
 
     // Verificação do humor
-    const funLastCheck = date - (new Date(funHabit?.lastCheck));
+    const funLastCheck = new Date(formatDate) - (new Date(funHabit?.lastCheck));
     const funDiff = parseInt(funLastCheck / (1000 * 3600 * 24));
 
     if (funHabit?.habitFrequency === "Diário") {
