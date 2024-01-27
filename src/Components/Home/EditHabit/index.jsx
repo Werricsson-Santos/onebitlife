@@ -31,7 +31,7 @@ export default function EditHabit({ habit, frequency, habitArea, checkColor }) {
         } else {
             CheckService.checkHabit({
                 habitIsChecked: 0,
-                habitChecks: habit?.habitChecks - 1,
+                habitChecks: habit?.habitChecks > 0 ? habit?.habitChecks - 1 : 0,
                 habitArea: habit?.habitArea,
             });
 
