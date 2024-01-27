@@ -3,8 +3,16 @@
     "name": "onebitlife",
     "slug": "onebitlife",
     "version": "1.0.0",
-    "assetBundlePatterns": [
-      "**/*"
-    ]
+    "assetBundlePatterns": ["**/*"],
+    "orientation": "portrait",
+    "icon": "./src/assets/icons/logo1.png",
+    "android": {
+      "package": "com.werricssonsantos.onebitlife"
+    },
+    "extra": {
+      "eas": {
+        "projectId": "ab503724-ab86-4d70-91cb-bcbb413ce352"
+      }
+    }
   }
 }
